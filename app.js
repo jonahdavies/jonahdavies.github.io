@@ -29,6 +29,7 @@ function gettime() {
 for (const timeMark of timeMarks) {
     timeMark.addEventListener('click', function(f) {
       this.parentNode.nextSibling.innerHTML=currentTime;
+      this.disabled = true;
     })
 };
 
@@ -39,6 +40,7 @@ for (const clear of clears) {
   clear.addEventListener('click', function(e) {
     // this.node.nextElementSibling.innerHTML = ` `
     this.parentNode.nextSibling.innerHTML=` `;
+    this.parentNode.firstChild.disabled = false;
   });
 }
 
@@ -48,12 +50,19 @@ for (const clearAll of clearAlls) {
      let timeOne = this.parentNode.parentNode.childNodes[3];
      let timeTwo = this.parentNode.parentNode.childNodes[6];
      let timeThree = this.parentNode.parentNode.childNodes[9] ;
+     let callOne = this.parentNode.parentNode.childNodes[2].firstChild;
+     let callTwo = this.parentNode.parentNode.childNodes[5].firstChild;
+     let callThree = this.parentNode.parentNode.childNodes[8].firstChild;
+
      timeOne.innerHTML=` `
      timeOne.style="color:black"
      timeTwo.innerHTML=` `
      timeTwo.style="color:black"
      timeThree.innerHTML=` `
      timeThree.style="color:black"
+     callOne.disabled = false;
+     callTwo.disabled = false;
+     callThree.disabled = false;
   });
 }
 
