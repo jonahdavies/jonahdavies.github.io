@@ -1,17 +1,15 @@
 let allcalls = db.collection('orcalls');
 class Stamp {
-  constructor(room, type, time){
-    room;
-    type;
+  constructor(roomtype, time){
+    roomtype;
     time;
   }
 
-async addCall(room, type, time) {
+async addCall(roomtype, time) {
     // format a new timestamp
     const now = new Date();
     const call = {
-      room: room,
-      type: type,
+      roomtype: roomtype,
       time: time,
       created_at: firebase.firestore.Timestamp.fromDate(now)
     };
@@ -23,7 +21,6 @@ async addCall(room, type, time) {
 updateTimes(callback){
     allcalls
       .orderBy('created_at', "desc")
-      .limit(8)
       .onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
           if(change.type === 'added'){

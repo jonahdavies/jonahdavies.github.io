@@ -28,7 +28,7 @@ class BoardUI {
 }
   renderNewTimes(data) {
     for (const timeStamp of timeStamps) {
-      if(timeStamp.id == `${data.type}-${data.room}`){
+      if(timeStamp.id == data.roomtype){
         timeStamp.innerHTML = `${data.time}`
       }
   }
@@ -64,9 +64,10 @@ container.addEventListener('click', function(e) {
 
     let id = e.target.id;
     let timeStamp = (timeStamps[`${id}`-10]);
+    console.log(timeStamp.id);
     roomtype = JSON.stringify(timeStamp.id)
 
-    stamp.addCall(roomtype.slice(6,8),roomtype.slice(1,5),currentTime)
+    stamp.addCall(timeStamp.id,currentTime)
       .then(() => e.target.disabled = true)
       .catch(err => console.log(err));
 
@@ -74,9 +75,9 @@ container.addEventListener('click', function(e) {
   if(e.target.className === 'clear btn btn-secondary btn-sm'){
     let id = e.target.id;
     let timeStamp = (timeStamps[`${id}`-110]);
-    roomtype = JSON.stringify(timeStamp.id)
 
-    stamp.addCall(roomtype.slice(6,8),roomtype.slice(1,5),' ')
+
+    stamp.addCall(timeStamp.id,' ')
       .then(() => e.target.previousSibling.disabled = false)
       .catch(err => console.log(err));
 
