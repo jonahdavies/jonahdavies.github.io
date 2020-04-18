@@ -20,7 +20,7 @@ async addCall(roomtype, time) {
 
 updateTimes(callback){
     allcalls
-      .orderBy('created_at', "desc")
+      .orderBy("created_at", "desc")
       .onSnapshot(snapshot => {
         snapshot.docChanges().forEach(change => {
           if(change.type === 'added'){

@@ -30,6 +30,7 @@ class BoardUI {
     for (const timeStamp of timeStamps) {
       if(timeStamp.id == data.roomtype){
         timeStamp.innerHTML = `${data.time}`
+        console.log(data);
       }
   }
 }
@@ -64,8 +65,6 @@ container.addEventListener('click', function(e) {
 
     let id = e.target.id;
     let timeStamp = (timeStamps[`${id}`-10]);
-    console.log(timeStamp.id);
-    roomtype = JSON.stringify(timeStamp.id)
 
     stamp.addCall(timeStamp.id,currentTime)
       .then(() => e.target.disabled = true)
