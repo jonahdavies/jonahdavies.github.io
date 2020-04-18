@@ -6,40 +6,11 @@ let container = document.querySelector('.container')
 let cell = document.querySelector('.list')
 
 gettime();
-// warning();
+warning();
+window.addEventListener("mouseover",roomTimes);
 
-class BoardUI {
-  constructor(cell){
-    this.cell = cell;
-  }
-
-
-  render(data){
-    const html = `
-      <li class="list-group-item">
-        <div class="time">${data.room}-${data.type}-${data.time}</span>
-      </li>
-    `;
-    this.cell.innerHTML += html;
-
-    // let currentStamp = document.getElementById('')
-    // run a foreach loop
-
-}
-  renderNewTimes(data) {
-    for (const timeStamp of timeStamps) {
-      if(timeStamp.id == data.roomtype){
-        timeStamp.innerHTML = `${data.time}`
-        console.log(data);
-      }
-  }
-}
-
-}
+//Initiate Stamp
 const stamp = new Stamp (1, 'pacu', '8:59:05');
-const boardUI = new BoardUI (cell);
-
-// boardUI.renderNewTimes();
 
 // Continuously update Time
 function gettime() {
@@ -94,22 +65,20 @@ container.addEventListener('click', function(e) {
   }
 });
 
-document.addEventListener(onload, stamp.updateTimes(data =>{boardUI.renderNewTimes(data)}))
+// Alert
+function warning(){
+for (const timeStamp of timeStamps) {
+let timeOne = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[3].innerHTML} PST`);
+let timeTwo = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[6].innerHTML} PST`);
+let timeThree = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[9].innerHTML} PST`);
+let timeFour = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[12].innerHTML} PST`);
+  if(Math.abs(timeOne - timeTwo) > 5000 || Math.abs(timeThree - timeTwo) > 5000 ){
 
-// // Alert
-// function warning(){
-// for (const timeStamp of timeStamps) {
-// let timeOne = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[3].innerHTML} PST`);
-// let timeTwo = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[6].innerHTML} PST`);
-// let timeThree = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[9].innerHTML} PST`);
-// let timeFour = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[12].innerHTML} PST`);
-//   if(Math.abs(timeOne - timeTwo) > 5000 || Math.abs(timeThree - timeTwo) > 5000 ){
-//
-//     timeStamp.style = "color:red";
-//   }
-// else {
-//   timeStamp.style = "color:black";
-// }
-//   }
-//   setTimeout("warning()",600)
-//   }
+    timeStamp.style = "color:red";
+  }
+else {
+  timeStamp.style = "color:black";
+}
+  }
+  setTimeout("warning()",600)
+  }
