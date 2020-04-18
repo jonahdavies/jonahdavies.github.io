@@ -1,13 +1,46 @@
 // List Variables
-let clears = document.querySelectorAll('.clear');
+let timeButton = document.querySelectorAll('.timeButton');
 let clearAlls = document.querySelectorAll('.clearall');
-let timeMarks = document.querySelectorAll('.timeButton');
 let timeStamps = document.querySelectorAll('.timestamp');
+let container = document.querySelector('.container')
+let cell = document.querySelector('.list')
 
 gettime();
-warning();
+// warning();
 
-//Continuously update Time
+class BoardUI {
+  constructor(cell){
+    this.cell = cell;
+  }
+
+
+  render(data){
+    const html = `
+      <li class="list-group-item">
+        <div class="time">${data.room}-${data.type}-${data.time}</span>
+      </li>
+    `;
+    this.cell.innerHTML += html;
+
+    // let currentStamp = document.getElementById('')
+    // run a foreach loop
+
+}
+  renderNewTimes(data) {
+    for (const timeStamp of timeStamps) {
+      if(timeStamp.id == `${data.type}-${data.room}`){
+        timeStamp.innerHTML = `${data.time}`
+      }
+  }
+}
+
+}
+const stamp = new Stamp (1, 'pacu', '8:59:05');
+const boardUI = new BoardUI (cell);
+
+// boardUI.renderNewTimes();
+
+// Continuously update Time
 function gettime() {
   var date= new Date();
   var hr = date.getHours();
@@ -25,62 +58,58 @@ function gettime() {
   setTimeout("gettime()",100)
 }
 
-//Current Time
-for (const timeMark of timeMarks) {
-    timeMark.addEventListener('click', function(f) {
-      this.parentNode.nextSibling.innerHTML=currentTime;
-      this.disabled = true;
-    })
-};
+//Button click functions
+container.addEventListener('click', function(e) {
+  if(e.target.className === 'timeButton btn btn-primary btn-sm'){
 
+    let id = e.target.id;
+    let timeStamp = (timeStamps[`${id}`-10]);
+    roomtype = JSON.stringify(timeStamp.id)
 
+    stamp.addCall(roomtype.slice(6,8),roomtype.slice(1,5),currentTime)
+      .then(() => e.target.disabled = true)
+      .catch(err => console.log(err));
 
-// clear current
-for (const clear of clears) {
-  clear.addEventListener('click', function(e) {
-    // this.node.nextElementSibling.innerHTML = ` `
-    this.parentNode.nextSibling.innerHTML=` `;
-    this.parentNode.firstChild.disabled = false;
-  });
-}
-
-//Clear All
-for (const clearAll of clearAlls) {
-  clearAll.addEventListener('click', function(g) {
-     let timeOne = this.parentNode.parentNode.childNodes[3];
-     let timeTwo = this.parentNode.parentNode.childNodes[6];
-     let timeThree = this.parentNode.parentNode.childNodes[9] ;
-     let callOne = this.parentNode.parentNode.childNodes[2].firstChild;
-     let callTwo = this.parentNode.parentNode.childNodes[5].firstChild;
-     let callThree = this.parentNode.parentNode.childNodes[8].firstChild;
-
-     timeOne.innerHTML=` `
-     timeOne.style="color:black"
-     timeTwo.innerHTML=` `
-     timeTwo.style="color:black"
-     timeThree.innerHTML=` `
-     timeThree.style="color:black"
-     callOne.disabled = false;
-     callTwo.disabled = false;
-     callThree.disabled = false;
-  });
-}
-
-//Alert
-function warning(){
-for (const timeStamp of timeStamps) {
-let timeOne = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[3].innerHTML} PST`);
-let timeTwo = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[6].innerHTML} PST`);
-let timeThree = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[9].innerHTML} PST`);
-
-  if(Math.abs(timeOne - timeTwo) > 5000 || Math.abs(timeThree - timeTwo) > 5000 ){
-
-
-    timeStamp.style = "color:red";
   }
-else {
-  timeStamp.style = "color:black";
-}
+  if(e.target.className === 'clear btn btn-secondary btn-sm'){
+    let id = e.target.id;
+    let timeStamp = (timeStamps[`${id}`-110]);
+    roomtype = JSON.stringify(timeStamp.id)
+
+    stamp.addCall(roomtype.slice(6,8),roomtype.slice(1,5),' ')
+      .then(() => e.target.previousSibling.disabled = false)
+      .catch(err => console.log(err));
+
+
   }
-  setTimeout("warning()",600)
+  if(e.target.className === 'clearall btn btn-secondary btn-sm'){
+    let id = e.target.id;
+    for (let i = `${id}`-200; i <`${id}`-196; i++) {
+      let alltimeStamps = timeStamps[i];
+      alltimeStamps.innerHTML = ''
+      let allTimeButtons = timeButton[i];
+      allTimeButtons.disabled=false;
+      }
+
   }
+});
+
+document.addEventListener(onload, stamp.updateTimes(data =>{boardUI.renderNewTimes(data)}))
+
+// // Alert
+// function warning(){
+// for (const timeStamp of timeStamps) {
+// let timeOne = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[3].innerHTML} PST`);
+// let timeTwo = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[6].innerHTML} PST`);
+// let timeThree = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[9].innerHTML} PST`);
+// let timeFour = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[12].innerHTML} PST`);
+//   if(Math.abs(timeOne - timeTwo) > 5000 || Math.abs(timeThree - timeTwo) > 5000 ){
+//
+//     timeStamp.style = "color:red";
+//   }
+// else {
+//   timeStamp.style = "color:black";
+// }
+//   }
+//   setTimeout("warning()",600)
+//   }
