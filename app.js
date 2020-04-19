@@ -1,13 +1,14 @@
 // List Variables
 let timeButtons = document.querySelectorAll('.timeButton');
+let clearButtons = document.querySelectorAll('.clear');
 let clearAlls = document.querySelectorAll('.clearall');
 let timeStamps = document.querySelectorAll('.timestamp');
 let container = document.querySelector('.container')
 let desk = document.getElementById('desk');
 let pacu = document.getElementById('pacu');
 let tspt = document.getElementById('tspt');
-console.log(desk.className);
 
+//Initiate functions
 gettime();
 warning();
 setTimeout(disabled,1000);
@@ -31,7 +32,7 @@ function gettime() {
       s = "0" + s
   }
   currentTime = hr + ":" + m + ":" + s;
-  setTimeout("gettime()",100)
+  setTimeout("gettime()",1000)
 }
 
 //Button click functions
@@ -104,21 +105,93 @@ else {
 
 // Loation Selection
 desk.addEventListener('click', function(e){
-  desk.className = "location btn btn-success btn-lg btn-block"
-  pacu.className = "location btn btn-primary btn-lg btn-block"
-  tspt.className = "location btn btn-primary btn-lg btn-block"
+  if(pacu.className === 'location btn btn-success btn-lg btn-block'){
+    invisiblePacu();
+    invisibleRoom();
+    invisibleDesk();
 
+  }
+  else if (tspt.className === 'location btn btn-success btn-lg btn-block') {
+    invisibleTspt();
+    invisibleRoom();
+    invisibleDesk();
+  }
+  else{
+  invisiblePacu();
+  invisibleTspt();
+}
+desk.className = "location btn btn-success btn-lg btn-block"
+pacu.className = "location btn btn-primary btn-lg btn-block"
+tspt.className = "location btn btn-primary btn-lg btn-block"
+desk.disabled=true;tspt.disabled=false;pacu.disabled=false;
 });
+
 pacu.addEventListener('click', function(e){
-  desk.className = "location btn btn-primary btn-lg btn-block"
-  pacu.className = "location btn btn-success btn-lg btn-block"
-  tspt.className = "location btn btn-primary btn-lg btn-block"
+  if(desk.className === 'location btn btn-success btn-lg btn-block'){
+    invisiblePacu();
+    invisibleRoom();
+    invisibleDesk();
+
+  }
+  else if (tspt.className === 'location btn btn-success btn-lg btn-block') {
+    invisibleTspt();
+    invisiblePacu();
+  }
+  else{
+  invisibleRoom();
+  invisibleDesk();
+  invisibleTspt();
+}
+desk.className = "location btn btn-primary btn-lg btn-block"
+pacu.className = "location btn btn-success btn-lg btn-block"
+tspt.className = "location btn btn-primary btn-lg btn-block"
+pacu.disabled=true;desk.disabled=false;tspt.disabled=false;
 });
+
 tspt.addEventListener('click', function(e){
-  desk.className = "location btn btn-primary btn-lg btn-block"
-  pacu.className = "location btn btn-primary btn-lg btn-block"
-  tspt.className = "location btn btn-success btn-lg btn-block"
+  if(desk.className === 'location btn btn-success btn-lg btn-block'){
+    invisibleTspt();
+    invisibleRoom();
+    invisibleDesk();
+
+  }
+  else if (pacu.className === 'location btn btn-success btn-lg btn-block') {
+    invisibleTspt();
+    invisiblePacu();
+  }
+  else{
+  invisibleRoom();
+  invisibleDesk();
+  invisiblePacu();
+}
+desk.className = "location btn btn-primary btn-lg btn-block";
+pacu.className = "location btn btn-primary btn-lg btn-block";
+tspt.className = "location btn btn-success btn-lg btn-block";
+tspt.disabled=true;desk.disabled=false;pacu.disabled=false;
 });
-// for (let i = `${id}`-200; i <`${id}`-196; i++) {
-//   let alltimeStamps = timeStamps[i];
-//   let allTimeButtons = timeButtons[i];
+
+//Toggle invisible on location
+function invisibleRoom() {
+  for (let i = 0; i <68; i+=4) {
+    let clearButton = clearButtons[i];
+    clearButton.classList.toggle('invisible');
+};
+}
+function invisibleDesk() {
+  for (let i = 1; i <68; i+=4) {
+    let clearButton = clearButtons[i];
+    clearButton.classList.toggle('invisible');
+};
+}
+function invisiblePacu() {
+  for (let i = 2; i <68; i+=4) {
+    let clearButton = clearButtons[i];
+    clearButton.classList.toggle('invisible');
+};
+}
+function invisibleTspt() {
+  for (let i = 3; i <68; i+=4) {
+    let clearButton = clearButtons[i];
+    clearButton.classList.toggle('invisible');
+};
+}
