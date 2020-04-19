@@ -7,7 +7,7 @@ let cell = document.querySelector('.list')
 
 gettime();
 warning();
-window.addEventListener("mouseover",roomTimes);
+window.addEventListener("load",roomTimes);
 
 //Initiate Stamp
 const stamp = new Stamp (1, 'pacu', '8:59:05');
@@ -72,7 +72,8 @@ let timeOne = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[3].inner
 let timeTwo = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[6].innerHTML} PST`);
 let timeThree = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[9].innerHTML} PST`);
 let timeFour = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[12].innerHTML} PST`);
-  if(Math.abs(timeOne - timeTwo) > 5000 || Math.abs(timeThree - timeTwo) > 5000 ){
+
+  if(Math.abs(timeOne - timeTwo) > 60000 || Math.abs(timeThree - timeTwo) > 60000 || Math.abs(timeFour - timeThree) > 60000  ){
 
     timeStamp.style = "color:red";
   }

@@ -26,15 +26,25 @@ function roomTimes(){
     .where("roomtype", "==", `${timeStamp.id}`)
     .orderBy("created_at", "desc")
     .limit(1)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-          let times = doc.data();
+    .onSnapshot(snapshot => {
+      snapshot.docChanges().forEach(change => {
+        if(change.type === 'added'){
+          callback(change.doc.data());
+          let times = change.doc.data();
             timeStamp.innerHTML =`${times.time}`;
-        });
+        }
+      });
     })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
+      // .get()
+      // .then(function(querySnapshot) {
+      //     querySnapshot.forEach(function(doc) {
+      //       let times = doc.data();
+      //         timeStamp.innerHTML =`${times.time}`;
+      //     });
+      // })
+      // .catch(function(error) {
+      //     console.log("Error getting documents: ", error);
+      // });
 }
+// setTimeout("roomTimes()",500);
 };
