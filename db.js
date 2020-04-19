@@ -29,22 +29,10 @@ function roomTimes(){
     .onSnapshot(snapshot => {
       snapshot.docChanges().forEach(change => {
         if(change.type === 'added'){
-          callback(change.doc.data());
           let times = change.doc.data();
             timeStamp.innerHTML =`${times.time}`;
         }
       });
     })
-      // .get()
-      // .then(function(querySnapshot) {
-      //     querySnapshot.forEach(function(doc) {
-      //       let times = doc.data();
-      //         timeStamp.innerHTML =`${times.time}`;
-      //     });
-      // })
-      // .catch(function(error) {
-      //     console.log("Error getting documents: ", error);
-      // });
 }
-// setTimeout("roomTimes()",500);
 };

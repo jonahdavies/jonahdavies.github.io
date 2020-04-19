@@ -3,7 +3,7 @@ let timeButton = document.querySelectorAll('.timeButton');
 let clearAlls = document.querySelectorAll('.clearall');
 let timeStamps = document.querySelectorAll('.timestamp');
 let container = document.querySelector('.container')
-let cell = document.querySelector('.list')
+// let cell = document.querySelector('.list')
 
 gettime();
 warning();
@@ -46,7 +46,6 @@ container.addEventListener('click', function(e) {
     let id = e.target.id;
     let timeStamp = (timeStamps[`${id}`-110]);
 
-
     stamp.addCall(timeStamp.id,' ')
       .then(() => e.target.previousSibling.disabled = false)
       .catch(err => console.log(err));
@@ -57,9 +56,10 @@ container.addEventListener('click', function(e) {
     let id = e.target.id;
     for (let i = `${id}`-200; i <`${id}`-196; i++) {
       let alltimeStamps = timeStamps[i];
-      alltimeStamps.innerHTML = ''
       let allTimeButtons = timeButton[i];
-      allTimeButtons.disabled=false;
+      stamp.addCall(alltimeStamps.id,' ')
+        .then(() => allTimeButtons.disabled=false)
+        .catch(err => console.log(err));
       }
 
   }
