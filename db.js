@@ -31,6 +31,7 @@ function roomTimes(){
         if(change.type === 'added'){
           let times = change.doc.data();
             timeStamp.innerHTML =`${times.time}`;
+            disabled();
         }
       });
     })

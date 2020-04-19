@@ -1,12 +1,16 @@
 // List Variables
-let timeButton = document.querySelectorAll('.timeButton');
+let timeButtons = document.querySelectorAll('.timeButton');
 let clearAlls = document.querySelectorAll('.clearall');
 let timeStamps = document.querySelectorAll('.timestamp');
 let container = document.querySelector('.container')
-// let cell = document.querySelector('.list')
+let desk = document.getElementById('desk');
+let pacu = document.getElementById('pacu');
+let tspt = document.getElementById('tspt');
+console.log(desk.className);
 
 gettime();
 warning();
+setTimeout(disabled,1000);
 window.addEventListener("load",roomTimes);
 
 //Initiate Stamp
@@ -56,7 +60,7 @@ container.addEventListener('click', function(e) {
     let id = e.target.id;
     for (let i = `${id}`-200; i <`${id}`-196; i++) {
       let alltimeStamps = timeStamps[i];
-      let allTimeButtons = timeButton[i];
+      let allTimeButtons = timeButtons[i];
       stamp.addCall(alltimeStamps.id,' ')
         .then(() => allTimeButtons.disabled=false)
         .catch(err => console.log(err));
@@ -64,6 +68,20 @@ container.addEventListener('click', function(e) {
 
   }
 });
+
+//Button disabled
+function disabled(){
+
+for (const timeButton of timeButtons) {
+  if(timeButton.parentNode.nextSibling.innerText === ''){
+
+    timeButton.disabled=false;
+  }
+else {
+  timeButton.disabled=true;
+}
+  }
+  }
 
 // Alert
 function warning(){
@@ -75,11 +93,32 @@ let timeFour = Date.parse(`01 Jan 1970 ${timeStamp.parentNode.childNodes[12].inn
 
   if(Math.abs(timeOne - timeTwo) > 60000 || Math.abs(timeThree - timeTwo) > 60000 || Math.abs(timeFour - timeThree) > 60000  ){
 
-    timeStamp.style = "color:red";
+    timeStamp.style = "color:red; font-weight:700;";
   }
 else {
   timeStamp.style = "color:black";
 }
   }
-  setTimeout("warning()",600)
+  setTimeout(warning,600)
   }
+
+// Loation Selection
+desk.addEventListener('click', function(e){
+  desk.className = "location btn btn-success btn-lg btn-block"
+  pacu.className = "location btn btn-primary btn-lg btn-block"
+  tspt.className = "location btn btn-primary btn-lg btn-block"
+
+});
+pacu.addEventListener('click', function(e){
+  desk.className = "location btn btn-primary btn-lg btn-block"
+  pacu.className = "location btn btn-success btn-lg btn-block"
+  tspt.className = "location btn btn-primary btn-lg btn-block"
+});
+tspt.addEventListener('click', function(e){
+  desk.className = "location btn btn-primary btn-lg btn-block"
+  pacu.className = "location btn btn-primary btn-lg btn-block"
+  tspt.className = "location btn btn-success btn-lg btn-block"
+});
+// for (let i = `${id}`-200; i <`${id}`-196; i++) {
+//   let alltimeStamps = timeStamps[i];
+//   let allTimeButtons = timeButtons[i];
