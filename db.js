@@ -6,13 +6,14 @@ class Stamp {
     time;
   }
 
-async addCall(roomtype, time) {
+async addCall(roomtype, time, comment) {
     // format a new timestamp
     const now = new Date();
     const call = {
       roomtype: roomtype,
       time: time,
-      created_at: firebase.firestore.Timestamp.fromDate(now)
+      created_at: firebase.firestore.Timestamp.fromDate(now),
+      comment: comment
     };
     // save the call document
     const response = await allcalls.add(call);
