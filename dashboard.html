@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+    <title>OR patient call APP</title>
+  </head>
+  <body>
+    <br>
+<div class="container" id="container">
+
+<div class="header text-center mb-3"><h1 class="display-2">OR CALLS DASHBOARD</h1></div>
+  <div class="row">
+  <div class="col-3">
+    <div class="card" style="width: 16rem; height: 12rem;">
+      <div class="card-body">
+        <h4 class="card-title mb-2">Room</h4>
+        <h6 class="card-subtitle mb-4 text-muted">Calls made</h6>
+        <h1 class="display-4 text-center">5</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card" style="width: 16rem; height: 12rem;">
+      <div class="card-body">
+        <h4 class="card-title mb-2">Desk</h4>
+        <h6 class="card-subtitle mb-4 text-muted">Calls made</h6>
+        <h1 class="display-4 text-center">5</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card" style="width: 16rem; height: 12rem;">
+      <div class="card-body">
+        <h4 class="card-title">Pacu</h4>
+        <h6 class="card-subtitle mb-4 text-muted">Calls made</h6>
+        <h1 class="display-4 text-center">5</h1>
+      </div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card" style="width: 16rem; height: 12rem;">
+      <div class="card-body">
+        <h4 class="card-title">Transport</h4>
+        <h6 class="card-subtitle mb-4 text-muted">Calls made</h6>
+        <h1 class="display-4 text-center">5</h1>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row mt-4">
+  <div class="col-6">
+    <div class="card ml-3" style="width: 32rem;">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-6">
+    <div class="card ml-2" style="width: 32rem;">
+      <div class="card-body">
+        <h5 class="card-title">Comments</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+<div class="row mt-5"><button class="btn btn-secondary btn-lg">Reload</button></div>
+</div>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-firestore.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD2SrNej_SMfSC3D1LSM0GKkOEYmsB1Xtc",
+    authDomain: "orcalls.firebaseapp.com",
+    databaseURL: "https://orcalls.firebaseio.com",
+    projectId: "orcalls",
+    storageBucket: "orcalls.appspot.com",
+    messagingSenderId: "421474183669",
+    appId: "1:421474183669:web:1e395e64a3364fe02b18bc"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+    <script src="db.js"></script>
+    <script src="dashboard.js"></script>
+
+  </body>
+</html>

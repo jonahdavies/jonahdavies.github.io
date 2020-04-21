@@ -38,3 +38,22 @@ function roomTimes(){
     })
 }
 };
+
+
+//Dashboarding functions
+function getDashboard(){
+  let yesterday = new Date()
+  yesterday.setDate(yesterday.getDate()-1);
+  allcalls
+  .where("created_at", ">", "yesterday")
+  .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+}
