@@ -1,5 +1,5 @@
 let allcalls = db.collection('orcalls');
-
+let commentsArray = new Array();
 class Stamp {
   constructor(roomtype, time){
     roomtype;
@@ -42,18 +42,36 @@ function roomTimes(){
 
 //Dashboarding functions
 function getDashboard(){
-  let yesterday = new Date()
-  yesterday.setDate(yesterday.getDate()-1);
-  console.log(yesterday);
   allcalls
-  .where("created_at", "<", "yesterday")
+  .where("comment", ">", " ")
+  .orderBy("comment", "desc")
+  .limit(50)
   .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            console.log(doc.id, " => ", doc.data());
+            let comments = doc.data()
+            const comment = comments.comment;
+
+            commentsArray.push(comment);
         });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
+
+    let commentsSets = new Set(commentsArray);
+
+    function addComments(){
+    for (let i = 0; i <10; i++) {
+      let commentsSet = commentsSets[i];
+      let html =
+      `
+        <li class="list-group-item">
+          <span class="username">${commentsSet}</span>
+        </li>
+      `;
+      commentsList.innerHTML += html
+    }
+console.log(html);
+}
 }
