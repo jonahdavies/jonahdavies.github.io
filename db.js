@@ -1,5 +1,10 @@
 let allcalls = db.collection('orcalls');
 let commentsArray = new Array();
+// let yesterday = new Date()
+// yesterday.setDate(yesterday.getDate()-1);
+let yesterday = new Date(new Date().getUTCFullYear(),new Date().getUTCMonth() , new Date().getUTCDate()-1);
+
+//stamp contructor
 class Stamp {
   constructor(roomtype, time){
     roomtype;
@@ -9,10 +14,13 @@ class Stamp {
 async addCall(roomtype, time, comment) {
     // format a new timestamp
     const now = new Date();
+    const day = new Date(new Date().getFullYear(),new Date().getMonth() , new Date().getDate());
+    console.log(day);
     const call = {
       roomtype: roomtype,
       time: time,
       created_at: firebase.firestore.Timestamp.fromDate(now),
+      created_day: day,
       comment: comment
     };
     // save the call document
@@ -42,6 +50,7 @@ function roomTimes(){
 
 //Dashboarding functions
 function getDashboard(){
+  commentsList.innerHTML = '';
   allcalls
   .where("comment", ">", " ")
   .orderBy("comment", "desc")
@@ -51,27 +60,57 @@ function getDashboard(){
         querySnapshot.forEach(function(doc) {
             let comments = doc.data()
             const comment = comments.comment;
-
             commentsArray.push(comment);
         });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
+    let commentsSet = new Set(commentsArray)
+    
+    let commentsArrays = [...commentsSet];
 
-    let commentsSets = new Set(commentsArray);
-
-    function addComments(){
-    for (let i = 0; i <10; i++) {
-      let commentsSet = commentsSets[i];
+    commentsArrays = commentsArrays.slice(0,10)
+    commentsArrays.forEach(function(value){
       let html =
       `
-        <li class="list-group-item">
-          <span class="username">${commentsSet}</span>
+        <li class="list-group-item p-2 ">
+          <span class="username ml-2">${value}</span>
         </li>
       `;
       commentsList.innerHTML += html
-    }
-console.log(html);
+      callswcomments.innerText = commentsSet.size
+    })
 }
+//Dashboarding functions
+function getLastDay(){
+  console.log('function fired');
+  allcalls
+  .where("created_day", "==", yesterday)
+  .orderBy("created_at", "desc")
+  .limit(50)
+  .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            let results = doc.data()
+            console.log(results);
+
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+    // let commentsSet = new Set(commentsArray)
+    // let commentsArrays = [...commentsSet];
+    // // console.log(commentsArrays);
+    // commentsArrays.slice(0,10)
+    // commentsArrays.forEach(function(value){
+    //   let html =
+    //   `
+    //     <li class="list-group-item p-2 ">
+    //       <span class="username ml-2">${value}</span>
+    //     </li>
+    //   `;
+    //   commentsList.innerHTML += html
+    // })
 }

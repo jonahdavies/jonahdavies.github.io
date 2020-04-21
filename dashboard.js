@@ -1,11 +1,17 @@
 //Get Variables
 let reload = document.querySelector('.btn');
 let commentsList = document.querySelector('.commentsList')
-let yesterday = new Date()
-yesterday.setDate(yesterday.getDate()-1);
+let currentDate = document.querySelector('.currentdate')
+let callswcomments =document.querySelector('.callswcomments')
+
+
+//append currentdate
+
+yesterdayOutput = yesterday.toString().slice(0,16);
+currentDate.innerHTML += `${yesterdayOutput}`
 
 //event listeners
 reload.addEventListener("click", getDashboard);
-
-setTimeout(getDashboard, 3000);
-setTimeout(getDashboard, 3000);
+window.addEventListener('load', getDashboard);
+setTimeout(getDashboard, 2000);
+setTimeout(getLastDay, 3000);

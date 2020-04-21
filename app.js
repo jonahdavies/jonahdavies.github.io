@@ -71,7 +71,6 @@ container.addEventListener('click', function(e) {
 submitComments.addEventListener('click',function(e){
 
   let id = e.target.id;
-  console.log(id);
   let comments = commentsBox.value;
   for (let i = `${id}`-200; i <`${id}`-196; i++) {
     let alltimeStamps = timeStamps[i];
@@ -81,6 +80,8 @@ submitComments.addEventListener('click',function(e){
       .then(() => allTimeButtons.disabled=false)
       .catch(err => console.log(err));
     }
+    commentsBox.value = '';
+
 })
 
 //Button disabled
