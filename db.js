@@ -44,6 +44,7 @@ function roomTimes(){
 function getDashboard(){
   let yesterday = new Date()
   yesterday.setDate(yesterday.getDate()-1);
+  console.log(yesterday);
   allcalls
   .where("created_at", "<", "yesterday")
   .get()
