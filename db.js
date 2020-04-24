@@ -1,7 +1,5 @@
 let allcalls = db.collection('orcalls');
 let commentsArray = new Array();
-// let yesterday = new Date()
-// yesterday.setDate(yesterday.getDate()-1);
 let yesterday = new Date(new Date().getUTCFullYear(),new Date().getUTCMonth() , new Date().getUTCDate()-1);
 
 //stamp contructor
@@ -47,7 +45,6 @@ function roomTimes(){
 }
 };
 
-
 //Dashboarding functions
 function getDashboard(){
   commentsList.innerHTML = '';
@@ -67,7 +64,7 @@ function getDashboard(){
         console.log("Error getting documents: ", error);
     });
     let commentsSet = new Set(commentsArray)
-    
+
     let commentsArrays = [...commentsSet];
 
     commentsArrays = commentsArrays.slice(0,10)
