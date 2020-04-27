@@ -12,7 +12,7 @@ const showUI = (user) => {
       // toggle user UI elements
       loggedInUI.forEach(item => item.style.display = 'block');
       loggedOutUI.forEach(item => item.style.display = 'none');
-      if (user.uid === 'V5znl295aHcLGVyq8z1atXpzCQq2'){
+      if (user.uid === 'V5znl295aHcLGVyq8z1atXpzCQq2' || ' KF6NtKC0WGVMyjgDc6ONfS7a4lj1' || 'KF6NtKC0WGVMyjgDc6ONfS7a4lj1'){
         console.log('hello admin');
       }
       else{
