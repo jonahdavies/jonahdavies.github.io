@@ -12,7 +12,7 @@ const showUI = (user) => {
       // toggle user UI elements
       loggedInUI.forEach(item => item.style.display = 'block');
       loggedOutUI.forEach(item => item.style.display = 'none');
-      if (user.uid === 'V5znl295aHcLGVyq8z1atXpzCQq2' || 'jDrlpFLDOAQqVlNSPvo3OKGd4cs2' || 'KF6NtKC0WGVMyjgDc6ONfS7a4lj1'){
+      if (user.uid !== 'Hp7WvYymekMl5fenq6v7VRwXYlH3'){
         console.log(user);
       }
       else{
