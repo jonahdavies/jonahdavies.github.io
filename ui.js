@@ -72,12 +72,8 @@ else {
       invisiblePacu();
       invisibleRoom();
       invisibleDesk();
-
-    }
-    else if (tspt.className === 'location btn btn-success btn-lg btn-block') {
       invisibleTspt();
-      invisibleRoom();
-      invisibleDesk();
+
     }
     else{
     invisiblePacu();
@@ -85,8 +81,8 @@ else {
   }
   desk.className = "location btn btn-success btn-lg btn-block"
   pacu.className = "location btn btn-primary btn-lg btn-block"
-  tspt.className = "location btn btn-primary btn-lg btn-block"
-  desk.disabled=true;tspt.disabled=false;pacu.disabled=false;
+
+  desk.disabled=true; pacu.disabled=false;
   visibleClearAll();
   });
 
@@ -95,46 +91,42 @@ else {
       invisiblePacu();
       invisibleRoom();
       invisibleDesk();
-
-    }
-    else if (tspt.className === 'location btn btn-success btn-lg btn-block') {
       invisibleTspt();
-      invisiblePacu();
     }
     else{
     invisibleRoom();
     invisibleDesk();
-    invisibleTspt();
+
   }
   desk.className = "location btn btn-primary btn-lg btn-block"
   pacu.className = "location btn btn-success btn-lg btn-block"
-  tspt.className = "location btn btn-primary btn-lg btn-block"
-  pacu.disabled=true;desk.disabled=false;tspt.disabled=false;
+  
+  pacu.disabled=true; desk.disabled=false;
   invisibleClearAll();
   });
 
-  tspt.addEventListener('click', function(e){
-    if(desk.className === 'location btn btn-success btn-lg btn-block'){
-      invisibleTspt();
-      invisibleRoom();
-      invisibleDesk();
-
-    }
-    else if (pacu.className === 'location btn btn-success btn-lg btn-block') {
-      invisibleTspt();
-      invisiblePacu();
-    }
-    else{
-    invisibleRoom();
-    invisibleDesk();
-    invisiblePacu();
-  }
-  desk.className = "location btn btn-primary btn-lg btn-block";
-  pacu.className = "location btn btn-primary btn-lg btn-block";
-  tspt.className = "location btn btn-success btn-lg btn-block";
-  tspt.disabled=true;desk.disabled=false;pacu.disabled=false;
-  invisibleClearAll();
-  });
+  // tspt.addEventListener('click', function(e){
+  //   if(desk.className === 'location btn btn-success btn-lg btn-block'){
+  //     invisibleTspt();
+  //     invisibleRoom();
+  //     invisibleDesk();
+  //
+  //   }
+  //   else if (pacu.className === 'location btn btn-success btn-lg btn-block') {
+  //     invisibleTspt();
+  //     invisiblePacu();
+  //   }
+  //   else{
+  //   invisibleRoom();
+  //   invisibleDesk();
+  //   invisiblePacu();
+  // }
+  // desk.className = "location btn btn-primary btn-lg btn-block";
+  // pacu.className = "location btn btn-primary btn-lg btn-block";
+  // tspt.className = "location btn btn-success btn-lg btn-block";
+  // tspt.disabled=true;desk.disabled=false;pacu.disabled=false;
+  // invisibleClearAll();
+  // });
 
   //Toggle invisible on location
   function invisibleRoom() {
