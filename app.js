@@ -84,7 +84,7 @@ submitComments.addEventListener('click',function(e){
 
   let id = e.target.id;
   let comments = commentsBox.value;
-  for (let i = `${id}`-200; i <`${id}`-196; i++) {
+  for (let i = `${id}`-210; i <`${id}`-206; i++) {
     let alltimeStamps = timeStamps[i];
     let allTimeButtons = timeButtons[i];
 

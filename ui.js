@@ -138,7 +138,7 @@ else {
 
   //Toggle invisible on location
   function invisibleRoom() {
-    for (let i = 0; i <68; i+=4) {
+    for (let i = 0; i <100; i+=4) {
       let clearButton = clearButtons[i];
       let callButton = timeButtons[i];
       clearButton.classList.toggle('invisible');
@@ -146,7 +146,7 @@ else {
   };
   }
   function invisibleDesk() {
-    for (let i = 1; i <68; i+=4) {
+    for (let i = 1; i <100; i+=4) {
       let clearButton = clearButtons[i];
       let callButton = timeButtons[i];
       clearButton.classList.toggle('invisible');
@@ -154,7 +154,7 @@ else {
   };
   }
   function invisiblePacu() {
-    for (let i = 2; i <68; i+=4) {
+    for (let i = 2; i <100; i+=4) {
       let clearButton = clearButtons[i];
       let callButton = timeButtons[i];
       clearButton.classList.toggle('invisible');
@@ -162,7 +162,7 @@ else {
   };
   }
   function invisibleTspt() {
-    for (let i = 3; i <68; i+=4) {
+    for (let i = 3; i <100; i+=4) {
       let clearButton = clearButtons[i];
       let callButton = timeButtons[i];
       clearButton.classList.toggle('invisible');
@@ -170,13 +170,13 @@ else {
   };
   }
   function invisibleClearAll() {
-    for (let i = 0; i <17; i++) {
+    for (let i = 0; i <28; i++) {
       let clearAll = clearAlls[i];
       clearAll.classList.add('invisible');
   };
   }
   function visibleClearAll() {
-    for (let i = 0; i <17; i++) {
+    for (let i = 0; i <28; i++) {
       let clearAll = clearAlls[i];
       clearAll.classList.remove('invisible');
   };
