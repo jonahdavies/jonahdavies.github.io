@@ -13,7 +13,7 @@ const showUI = (user) => {
       loggedInUI.forEach(item => item.style.display = 'block');
       loggedOutUI.forEach(item => item.style.display = 'none');
       if (user.uid === 'V5znl295aHcLGVyq8z1atXpzCQq2' || 'jDrlpFLDOAQqVlNSPvo3OKGd4cs2' || 'KF6NtKC0WGVMyjgDc6ONfS7a4lj1'){
-        console.log('hello admin');
+        console.log(user);
       }
       else{
         let resetTime = document.querySelectorAll('.resetTime');
